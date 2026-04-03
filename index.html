@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Villa Li Petri — Guida Ospiti</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #FFFFFF;
+  --off-white: #F9F7F4;
+  --cream: #F2EDE5;
+  --warm-sand: #EDE6D8;
+  --stone: #DDD5C4;
+  --terra: #9B6B4A;
+  --terra-light: #B8875E;
+  --terra-pale: #F0E4D7;
+  --sage: #6B7C62;
+  --sea: #4A6B7A;
+  --text: #1E1A15;
+  --text-mid: #5C5248;
+  --text-soft: #9A9088;
+  --line: #E4DDD0;
+  --radius: 16px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); max-width: 430px; margin: 0 auto; overflow: hidden; }
+
+.app { display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; }
+
+/* LANGUAGE TOGGLE */
+.lang-toggle { position: fixed; top: 66px; right: 14px; display: flex; align-items: center; background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(0,0,0,0.08); z-index: 90; }
+.lang-opt { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 1px; padding: 5px 9px; border: none; background: none; cursor: pointer; color: var(--text-soft); transition: all .2s; }
+.lang-opt.active { background: var(--terra); color: white; border-radius: 20px; }
+
+/* TOP NAV */
+.top-nav { background: var(--white); border-bottom: 1px solid var(--line); padding: 0 4px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; height: 56px; }
+.top-nav::-webkit-scrollbar { display: none; }
+.nav-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 10px; border: none; background: none; cursor: pointer; border-radius: 10px; white-space: nowrap; flex-shrink: 0; position: relative; }
+.nav-tab.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 18px; height: 2px; background: var(--terra); border-radius: 2px; }
+.tab-icon svg { width: 20px; height: 20px; stroke: var(--text-soft); stroke-width: 1.5; fill: none; transition: stroke .2s; }
+.nav-tab.active .tab-icon svg { stroke: var(--terra); }
+.tab-label { font-size: 9px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: var(--text-soft); transition: color .2s; }
+.nav-tab.active .tab-label { color: var(--terra); }
+
+/* SCREENS */
+.screen { display: none; flex: 1; overflow-y: auto; flex-direction: column; -webkit-overflow-scrolling: touch; }
+.screen.active { display: flex; animation: fadeUp .25s ease; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(5px) } to { opacity:1; transform: none } }
+
+/* BILINGUAL */
+body.lang-en .it-text { display: none !important; }
+body.lang-it .en-text { display: none !important; }
+
+/* HOME */
+.home-hero { background: var(--white); padding: 36px 28px 28px; text-align: center; border-bottom: 1px solid var(--line); position: relative; }
+.home-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--terra-light), transparent); }
+.logo-wrap { margin-bottom: 16px; display: flex; justify-content: center; }
+.logo-wrap img { height: 62px; width: auto; object-fit: contain; }
+.logo-fallback { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; letter-spacing: 2px; color: var(--terra); }
+.home-eyebrow { font-size: 9px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+.home-dear { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--text-soft); margin-bottom: 2px; }
+.home-welcome { font-family: 'Cormorant Garamond', serif; font-size: 58px; font-weight: 300; line-height: 1; color: var(--text); margin-bottom: 10px; font-style: italic; }
+.home-ornament { display: flex; align-items: center; gap: 10px; justify-content: center; margin: 12px 0 10px; }
+.home-ornament::before, .home-ornament::after { content: ''; flex: 1; max-width: 44px; height: 1px; background: var(--terra-light); opacity: .5; }
+.home-ornament span { color: var(--terra); font-size: 9px; letter-spacing: 3px; }
+.home-property { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--text-mid); font-weight: 400; }
+
+/* GRID */
+.home-grid { padding: 22px 18px 8px; }
+.grid-eyebrow { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-soft); margin-bottom: 14px; text-align: center; }
+.icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+.icon-btn { display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 6px 12px; cursor: pointer; transition: transform .15s, box-shadow .15s, border-color .15s; }
+.icon-btn:active { transform: scale(0.95); box-shadow: 0 4px 14px rgba(155,107,74,.15); border-color: var(--terra-light); }
+.btn-icon svg { width: 24px; height: 24px; stroke: var(--text-mid); stroke-width: 1.4; fill: none; }
+.btn-label { font-size: 9.5px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-mid); text-align: center; line-height: 1.3; }
+
+/* WELCOME CARD */
+.welcome-wrap { padding: 8px 18px 40px; }
+.welcome-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 20px 16px; position: relative; overflow: hidden; }
+.welcome-card::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 90px; line-height: 1; color: var(--terra); opacity: .1; position: absolute; top: -6px; left: 10px; pointer-events: none; }
+.welcome-text { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; line-height: 1.85; color: var(--text-mid); padding-top: 10px; margin-bottom: 16px; }
+.welcome-author { display: flex; align-items: center; gap: 12px; padding-top: 13px; border-top: 1px solid var(--line); }
+.author-mono { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--terra-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.author-mono svg { width: 14px; height: 14px; stroke: var(--terra); stroke-width: 1.5; fill: none; }
+.author-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.author-role { font-size: 11px; color: var(--text-soft); }
+
+/* PAGE HEADER */
+.page-header { background: var(--white); padding: 26px 22px 20px; border-bottom: 1px solid var(--line); position: relative; flex-shrink: 0; }
+.page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--terra-light), transparent); }
+.page-eyebrow { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--terra); margin-bottom: 4px; font-weight: 400; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--text); line-height: 1.1; }
+.page-body { padding: 16px 16px 60px; }
+
+/* CARD */
+.card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 9px; }
+.card-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--terra); margin-bottom: 11px; font-weight: 500; }
+.card p { font-size: 14px; line-height: 1.78; color: var(--text-mid); }
+.card strong { color: var(--text); font-weight: 500; }
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.info-row:last-child { border-bottom: none; padding-bottom: 0; }
+.info-label { font-size: 12px; color: var(--text-soft); }
+.info-value { font-size: 13px; font-weight: 500; color: var(--text); text-align: right; max-width: 60%; }
+
+/* WIFI */
+.wifi-card { background: var(--text); border-radius: var(--radius); padding: 24px 20px; margin-bottom: 9px; text-align: center; position: relative; overflow: hidden; }
+.wifi-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(155,107,74,.25), transparent 60%); }
+.wifi-ico { margin-bottom: 16px; position: relative; z-index: 1; }
+.wifi-ico svg { width: 34px; height: 34px; stroke: var(--terra-light); stroke-width: 1.3; fill: none; }
+.wifi-field { margin-bottom: 8px; position: relative; z-index: 1; }
+.wifi-field-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 2px; }
+.wifi-field-val { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: white; letter-spacing: 1px; }
+.copy-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--terra); border: none; border-radius: 100px; color: white; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 9px 20px; cursor: pointer; margin-top: 8px; position: relative; z-index: 1; transition: opacity .2s; }
+.copy-btn:active { opacity: .75; }
+.copy-btn svg { width: 12px; height: 12px; stroke: white; stroke-width: 2; fill: none; }
+
+/* RULES */
+.rule-item { display: flex; gap: 13px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.rule-item:last-child { border-bottom: none; padding-bottom: 0; }
+.rule-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--terra); line-height: 1; flex-shrink: 0; width: 22px; text-align: right; margin-top: -1px; }
+.rule-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.rule-desc { font-size: 13px; line-height: 1.65; color: var(--text-mid); }
+
+/* SPACES */
+.space-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 9px; }
+.space-header { display: flex; align-items: center; gap: 11px; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid var(--line); }
+.space-icon svg { width: 20px; height: 20px; stroke: var(--terra); stroke-width: 1.4; fill: none; }
+.space-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--text); }
+.space-desc { font-size: 13px; line-height: 1.7; color: var(--text-mid); margin-bottom: 9px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { background: var(--cream); border-radius: 100px; padding: 4px 10px; font-size: 11px; color: var(--text-mid); }
+
+/* PLACES */
+.place-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 9px; display: flex; gap: 13px; }
+.place-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--terra); flex-shrink: 0; margin-top: 7px; }
+.place-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--text); margin-bottom: 3px; }
+.place-desc { font-size: 13px; line-height: 1.65; color: var(--text-mid); margin-bottom: 6px; }
+.place-dist { font-size: 10px; color: var(--terra); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+
+/* SECRET TIP */
+.secret-card { background: linear-gradient(135deg, var(--sage) 0%, #4a6b5a 100%); border-radius: var(--radius); padding: 18px; margin-bottom: 9px; }
+.secret-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 6px; font-weight: 500; }
+.secret-text { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; line-height: 1.7; color: rgba(255,255,255,.92); }
+
+/* RESTAURANTS */
+.resto-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 9px; }
+.resto-band { height: 6px; background: linear-gradient(90deg, var(--terra-pale), var(--terra-light), var(--terra-pale)); }
+.resto-body { padding: 14px 16px 14px; }
+.resto-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 1px; }
+.resto-type { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); margin-bottom: 7px; }
+.resto-desc { font-size: 13px; line-height: 1.65; color: var(--text-mid); margin-bottom: 11px; }
+.resto-footer { display: flex; align-items: center; justify-content: space-between; }
+.guide-btn { display: inline-flex; align-items: center; gap: 5px; background: var(--terra); color: white; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 13px; cursor: pointer; transition: opacity .2s; text-decoration: none; }
+.guide-btn:active { opacity: .75; }
+.guide-btn svg { width: 10px; height: 10px; stroke: white; stroke-width: 2; fill: none; }
+
+/* SUPERMARKET */
+.market-card { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 9px; }
+.market-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); margin-bottom: 8px; font-weight: 500; }
+
+/* SERVICES */
+.service-row { display: flex; align-items: flex-start; gap: 13px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.service-row:last-child { border-bottom: none; padding-bottom: 0; }
+.service-icon { flex-shrink: 0; margin-top: 2px; }
+.service-icon svg { width: 18px; height: 18px; stroke: var(--terra); stroke-width: 1.5; fill: none; }
+.service-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.service-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+/* EMERGENCY */
+.sos-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin-bottom: 9px; display: flex; align-items: center; gap: 13px; }
+.sos-icon { width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sos-icon svg { width: 20px; height: 20px; fill: none; stroke-width: 1.5; }
+.sos-info { flex: 1; }
+.sos-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.sos-desc { font-size: 11px; color: var(--text-soft); line-height: 1.4; }
+.call-btn { display: flex; align-items: center; gap: 5px; background: var(--text); color: white; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 7px 12px; cursor: pointer; text-decoration: none; transition: opacity .2s; white-space: nowrap; }
+.call-btn.terra { background: var(--terra); }
+.call-btn:active { opacity: .75; }
+.call-btn svg { width: 11px; height: 11px; stroke: white; stroke-width: 2; fill: none; }
+
+/* INFO BOX */
+.info-box { background: var(--terra-pale); border: 1px solid rgba(155,107,74,.2); border-radius: var(--radius); padding: 14px; margin-bottom: 9px; }
+.info-box-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 6px; font-weight: 500; }
+.info-box p { font-size: 13px; line-height: 1.7; color: var(--text-mid); }
+.info-box strong { color: var(--text); font-weight: 500; }
+
+/* CONTACT BAR */
+.contact-bar { background: var(--text); border-radius: var(--radius); padding: 16px 16px; margin-bottom: 9px; display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; }
+.contact-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 80% 50%, rgba(155,107,74,.2), transparent 55%); }
+.contact-bar-text { position: relative; z-index: 1; }
+.contact-bar-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 2px; }
+.contact-bar-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: white; font-weight: 300; }
+.contact-bar-btn { position: relative; z-index: 1; background: var(--terra); border: none; border-radius: 100px; color: white; font-family: 'DM Sans', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; cursor: pointer; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: opacity .2s; }
+.contact-bar-btn svg { width: 11px; height: 11px; stroke: white; stroke-width: 2; fill: none; }
+.contact-bar-btn:active { opacity: .75; }
+
+/* STEPS */
+.step-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.step-item:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--terra); line-height: 1; flex-shrink: 0; width: 24px; text-align: right; margin-top: -3px; }
+.step-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.step-desc { font-size: 13px; line-height: 1.65; color: var(--text-mid); }
+
+/* SARDINIA BADGE */
+.sardinia-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--sea); color: white; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; padding: 5px 12px; border-radius: 100px; margin-bottom: 16px; }
+</style>
+</head>
+<body class="lang-it">
+<div class="app">
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <button class="nav-tab active" onclick="showScreen('home',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+      <span class="tab-label"><span class="it-text">Home</span><span class="en-text">Home</span></span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('checkin',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg></span>
+      <span class="tab-label">Check-in</span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('wifi',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></span>
+      <span class="tab-label">WiFi</span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('regole',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+      <span class="tab-label"><span class="it-text">Regole</span><span class="en-text">Rules</span></span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('spazi',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+      <span class="tab-label"><span class="it-text">Spazi</span><span class="en-text">Spaces</span></span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('visitare',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <span class="tab-label"><span class="it-text">Luoghi</span><span class="en-text">Places</span></span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('ristoranti',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+      <span class="tab-label"><span class="it-text">Ristoranti</span><span class="en-text">Eat & Drink</span></span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('servizi',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+      <span class="tab-label"><span class="it-text">Servizi</span><span class="en-text">Services</span></span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('emergenza',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+      <span class="tab-label">SOS</span>
+    </button>
+    <button class="nav-tab" onclick="showScreen('checkout',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+      <span class="tab-label">Check-out</span>
+    </button>
+  </nav>
+  <div class="lang-toggle">
+    <button class="lang-opt active" id="btn-it" onclick="setLang('it')">IT</button>
+    <button class="lang-opt" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <!-- ═══ HOME ═══ -->
+  <div id="home" class="screen active">
+    <div class="home-hero">
+      <div class="logo-wrap">
+        <img src="https://ik.imagekit.io/2gkrpnbbol/Villa_carola_guida" alt="Villa Li Petri" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="logo-fallback" style="display:none">Villa Li Petri</div>
+      </div>
+      <div class="home-eyebrow">Olbia · Sardegna</div>
+      <div class="home-welcome">
+        <span class="it-text">Benvenuti!</span>
+        <span class="en-text">Welcome!</span>
+      </div>
+      <div class="home-ornament"><span>✦ ✦ ✦</span></div>
+      <div class="home-property">Villa Li Petri</div>
+    </div>
+    <div class="home-grid">
+      <div class="grid-eyebrow">
+        <span class="it-text">La tua guida completa</span>
+        <span class="en-text">Your complete guide</span>
+      </div>
+      <div class="icon-grid">
+        <button class="icon-btn" onclick="goTo('checkin',1)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg></span>
+          <span class="btn-label">Check-in</span>
+        </button>
+        <button class="icon-btn" onclick="goTo('wifi',2)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="btn-label">WiFi</span>
+        </button>
+        <button class="icon-btn" onclick="goTo('regole',3)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          <span class="btn-label"><span class="it-text">Regole</span><span class="en-text">Rules</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('spazi',4)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <span class="btn-label"><span class="it-text">Spazi</span><span class="en-text">Spaces</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('visitare',5)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span class="btn-label"><span class="it-text">Da Visitare</span><span class="en-text">Places</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('ristoranti',6)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+          <span class="btn-label"><span class="it-text">Ristoranti</span><span class="en-text">Restaurants</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('servizi',7)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          <span class="btn-label"><span class="it-text">Servizi</span><span class="en-text">Services</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('emergenza',8)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+          <span class="btn-label"><span class="it-text">Emergenza</span><span class="en-text">Emergency</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('checkout',9)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+          <span class="btn-label">Check-out</span>
+        </button>
+      </div>
+    </div>
+    <div class="welcome-wrap">
+      <div class="welcome-card">
+        <p class="welcome-text it-text">Benvenuti in un angolo di paradiso sospeso tra cielo e mare, dove il tempo rallenta e ogni respiro profuma di libertà. Lasciatevi avvolgere dalla magia della Sardegna, dal suono delle onde e dai tramonti che accarezzano l'anima. Questa non è solo una villa, è un'esperienza da vivere con il cuore.</p>
+        <p class="welcome-text en-text">Welcome to a corner of paradise suspended between sky and sea, where time slows and every breath smells of freedom. Let yourself be wrapped in the magic of Sardinia, the sound of the waves, and the sunsets that caress the soul. This is not just a villa — it is an experience to live with your heart.</p>
+        <div class="welcome-author">
+          <div class="author-mono"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="author-name">Carola</div>
+            <div class="author-role it-text">La tua host</div>
+            <div class="author-role en-text">Your host</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CHECK-IN ═══ -->
+  <div id="checkin" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Arrivo</div>
+      <div class="page-eyebrow en-text">Arrival</div>
+      <div class="page-title">Check-in &amp; <span class="it-text">Accesso</span><span class="en-text">Access</span></div>
+    </div>
+    <div class="page-body">
+      <div class="card">
+        <div class="card-label it-text">Orari &amp; Info</div>
+        <div class="card-label en-text">Times &amp; Info</div>
+        <div class="info-row">
+          <span class="info-label">Check-in</span>
+          <span class="info-value it-text">dalle 16:00</span>
+          <span class="info-value en-text">from 4:00 PM</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Check-out</span>
+          <span class="info-value it-text">entro le 11:00</span>
+          <span class="info-value en-text">by 11:00 AM</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label it-text">Ospiti massimi</span>
+          <span class="info-label en-text">Max guests</span>
+          <span class="info-value">4</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label it-text">Indirizzo</span>
+          <span class="info-label en-text">Address</span>
+          <span class="info-value">Via Li Petri 10/5, Olbia (OT)</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label it-text">Come accedere</div>
+        <div class="card-label en-text">How to access</div>
+        <p class="it-text">Le chiavi vengono <strong>consegnate di persona</strong> da Graziella, la nostra referente sul posto.<br><br>In caso di impossibilità: dal cancello pedonale digitare il codice sbarra <strong>2323E</strong>, accedere al cancellino del civico 10/5 e recuperare chiavi e telecomandi dalla <strong>cassettina con codice</strong>.</p>
+        <p class="en-text">Keys are <strong>handed over in person</strong> by Graziella, our on-site contact.<br><br>If she is unavailable: enter through the pedestrian gate using code <strong>2323E</strong>, proceed to the gate of number 10/5 and retrieve keys and remotes from the <strong>coded key box</strong>.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-label it-text">Parcheggio</div>
+        <div class="card-label en-text">Parking</div>
+        <p class="it-text">Posto auto riservato privato all'interno della proprietà (di fianco al cancellino del civico 10/5). Dopo aver ritirato le chiavi potete portare la macchina all'interno del villaggio e parcheggiarla nel parcheggio della proprietà. Per uscire usate il <strong>telecomando del cancello carrabile</strong>.</p>
+        <p class="en-text">Private reserved parking space within the property (next to the gate of number 10/5). After collecting the keys you can bring the car inside the village and park in the property's space. Use the <strong>gate remote control</strong> to exit with the car.</p>
+      </div>
+
+      <a href="https://www.google.com/maps/place/Via+Li+Petri,+10%2F5,+07026+Olbia+OT/" target="_blank" class="guide-btn" style="width:100%;justify-content:center;border-radius:12px;padding:12px;font-size:10px;letter-spacing:1.5px;text-decoration:none;">
+        <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:white;stroke-width:2;fill:none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="it-text">Indicazioni stradali</span>
+        <span class="en-text">Get directions</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ WIFI ═══ -->
+  <div id="wifi" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Connettività</div>
+      <div class="page-eyebrow en-text">Connectivity</div>
+      <div class="page-title">WiFi</div>
+    </div>
+    <div class="page-body">
+      <div class="wifi-card">
+        <div class="wifi-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <div class="wifi-field">
+          <div class="wifi-field-lbl it-text">Nome Rete</div>
+          <div class="wifi-field-lbl en-text">Network Name</div>
+          <div class="wifi-field-val">Siportal wifi</div>
+        </div>
+        <div class="wifi-field">
+          <div class="wifi-field-lbl">Password</div>
+          <div class="wifi-field-val" id="pwd">2020W03052</div>
+        </div>
+        <button class="copy-btn" onclick="copyPwd(this)">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span class="it-text">Copia Password</span>
+          <span class="en-text">Copy Password</span>
+        </button>
+      </div>
+      <div class="card">
+        <div class="card-label it-text">Nota</div>
+        <div class="card-label en-text">Note</div>
+        <p class="it-text">Il router si trova in <strong>salotto</strong>. Il segnale è ottimale in <strong>cucina, salotto e veranda</strong>.</p>
+        <p class="en-text">The router is located in the <strong>living room</strong>. Best signal in the <strong>kitchen, living room and veranda</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ REGOLE ═══ -->
+  <div id="regole" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Da Rispettare</div>
+      <div class="page-eyebrow en-text">Please observe</div>
+      <div class="page-title"><span class="it-text">Regole della Casa</span><span class="en-text">House Rules</span></div>
+    </div>
+    <div class="page-body">
+      <div class="card">
+        <!-- Rule 1 -->
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div>
+            <div class="rule-title it-text">Silenzio Notturno</div>
+            <div class="rule-title en-text">Quiet Hours</div>
+            <div class="rule-desc it-text">Dalle <strong>14:00 alle 16:00</strong> (riposo pomeridiano) e dalle <strong>23:00 alle 8:00</strong> si prega di mantenere un livello di rumore ridotto.</div>
+            <div class="rule-desc en-text">Please keep noise to a minimum from <strong>2:00 PM to 4:00 PM</strong> (afternoon rest) and from <strong>11:00 PM to 8:00 AM</strong>.</div>
+          </div>
+        </div>
+        <!-- Rule 2 -->
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div>
+            <div class="rule-title it-text">Fumo</div>
+            <div class="rule-title en-text">Smoking</div>
+            <div class="rule-desc it-text">Consentito <strong>solo sul balcone/terrazzo</strong>. Vietato negli spazi interni.</div>
+            <div class="rule-desc en-text">Permitted <strong>on the balcony/terrace only</strong>. Prohibited in all indoor areas.</div>
+          </div>
+        </div>
+        <!-- Rule 3 -->
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div>
+            <div class="rule-title it-text">Animali Domestici</div>
+            <div class="rule-title en-text">Pets</div>
+            <div class="rule-desc it-text">Gli animali domestici <strong>non sono ammessi</strong> in villa.</div>
+            <div class="rule-desc en-text">Pets are <strong>not allowed</strong> in the villa.</div>
+          </div>
+        </div>
+        <!-- Rule 4 -->
+        <div class="rule-item">
+          <div class="rule-num">4</div>
+          <div>
+            <div class="rule-title it-text">Ospiti Esterni</div>
+            <div class="rule-title en-text">External Visitors</div>
+            <div class="rule-desc it-text">È possibile ricevere visitatori esterni, ma <strong>non possono pernottare</strong>.</div>
+            <div class="rule-desc en-text">You may have visitors, but they <strong>cannot stay overnight</strong>.</div>
+          </div>
+        </div>
+        <!-- Rule 5 -->
+        <div class="rule-item">
+          <div class="rule-num">5</div>
+          <div>
+            <div class="rule-title it-text">Raccolta Differenziata</div>
+            <div class="rule-title en-text">Waste Sorting</div>
+            <div class="rule-desc it-text">Sotto il lavello: <strong>bidoncini per umido e secco</strong>. Di fianco al frigo: contenitore bianco per <strong>carta, plastica e vetro</strong>. Quando sono pieni, portare i sacchetti nei bidoni in corrispondenza del parcheggio. A fine soggiorno penserà la nostra incaricata.</div>
+            <div class="rule-desc en-text">Under the sink: <strong>bins for wet and dry waste</strong>. Next to the fridge: white container for <strong>paper, plastic and glass</strong>. When full, take the bags to the bins by the parking area. Our staff will handle final disposal at the end of your stay.</div>
+          </div>
+        </div>
+        <!-- Rule 6 -->
+        <div class="rule-item">
+          <div class="rule-num">6</div>
+          <div>
+            <div class="rule-title it-text">Piano a Induzione</div>
+            <div class="rule-title en-text">Induction Hob</div>
+            <div class="rule-desc it-text">Il piano a induzione è <strong>delicato</strong>: non appoggiarvi mai nulla sopra (rischia di rovinarsi e rompersi). La penisola in legno è pensata per appoggiarvi sacchi della spesa e oggetti.</div>
+            <div class="rule-desc en-text">The induction hob is <strong>fragile</strong>: never rest anything on it (it may scratch and break). Use the wooden kitchen island for bags and items instead.</div>
+          </div>
+        </div>
+        <!-- Rule 7 -->
+        <div class="rule-item">
+          <div class="rule-num">7</div>
+          <div>
+            <div class="rule-title it-text">Risparmio Idrico &amp; Energetico</div>
+            <div class="rule-title en-text">Water &amp; Energy Saving</div>
+            <div class="rule-desc it-text">Nelle isole l'acqua è un bene prezioso — evitate docce molto lunghe. Spegnete aria condizionata e luci quando uscite di casa.</div>
+            <div class="rule-desc en-text">On islands water is precious — please avoid very long showers. Switch off air conditioning and lights when you leave.</div>
+          </div>
+        </div>
+        <!-- Rule 8 -->
+        <div class="rule-item">
+          <div class="rule-num">8</div>
+          <div>
+            <div class="rule-title it-text">WC — Attenzione!</div>
+            <div class="rule-title en-text">Toilet — Important!</div>
+            <div class="rule-desc it-text"><strong>Non buttare carta igienica nel wc</strong>: si rischierebbe di intasare gli scarichi. Usate il cestino apposito.</div>
+            <div class="rule-desc en-text"><strong>Do not flush toilet paper</strong>: it may block the drains. Please use the bin provided.</div>
+          </div>
+        </div>
+        <!-- Rule 9 -->
+        <div class="rule-item">
+          <div class="rule-num">9</div>
+          <div>
+            <div class="rule-title it-text">Cancellini del Giardino</div>
+            <div class="rule-title en-text">Garden Gates</div>
+            <div class="rule-desc it-text">Tenere i cancellini del giardino <strong>sempre chiusi</strong> (anche se non a chiave) per evitare ingressi indesiderati. La macchia mediterranea è ricca di fauna — godetevela in sicurezza!</div>
+            <div class="rule-desc en-text">Keep the garden gates <strong>always closed</strong> (even if not locked) to prevent unwanted access. The Mediterranean scrubland is rich in wildlife — enjoy it safely!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SPAZI ═══ -->
+  <div id="spazi" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">L'Appartamento</div>
+      <div class="page-eyebrow en-text">The Property</div>
+      <div class="page-title it-text">Gli Spazi</div>
+      <div class="page-title en-text">The Spaces</div>
+    </div>
+    <div class="page-body">
+      <!-- Camere -->
+      <div class="space-card">
+        <div class="space-header">
+          <span class="space-icon"><svg viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 010 4H2"/><path d="M2 20h20"/></svg></span>
+          <div class="space-name it-text">2 Camere da Letto</div>
+          <div class="space-name en-text">2 Bedrooms</div>
+        </div>
+        <p class="space-desc it-text">Entrambe con letto matrimoniale. In una delle due è presente uno <strong>spazio lavoro con scrivania</strong>.</p>
+        <p class="space-desc en-text">Both with double beds. One room has a <strong>dedicated work area with desk</strong>.</p>
+        <div class="tag-row"><span class="tag it-text">Aria condizionata</span><span class="tag en-text">Air conditioning</span></div>
+      </div>
+      <!-- Cucina -->
+      <div class="space-card">
+        <div class="space-header">
+          <span class="space-icon"><svg viewBox="0 0 24 24"><path d="M3 2h18v6H3zM3 14h18v6H3z"/><line x1="12" y1="8" x2="12" y2="14"/></svg></span>
+          <div class="space-name it-text">Cucina</div>
+          <div class="space-name en-text">Kitchen</div>
+        </div>
+        <p class="space-desc it-text">Completamente attrezzata. A disposizione una <strong>macchinetta per il caffè</strong> con alcune capsule incluse. Piano a induzione (maneggiare con cura).</p>
+        <p class="space-desc en-text">Fully equipped. A <strong>coffee machine</strong> with capsules is provided. Induction hob (handle with care).</p>
+        <div class="tag-row">
+          <span class="tag it-text">Macchinetta caffè</span><span class="tag en-text">Coffee machine</span>
+          <span class="tag it-text">Lavastoviglie</span><span class="tag en-text">Dishwasher</span>
+          <span class="tag it-text">Piano induzione</span><span class="tag en-text">Induction hob</span>
+        </div>
+      </div>
+      <!-- Bagni -->
+      <div class="space-card">
+        <div class="space-header">
+          <span class="space-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4z"/><path d="M4 12V6a2 2 0 012-2h1a2 2 0 012 2v1"/></svg></span>
+          <div class="space-name it-text">2 Bagni</div>
+          <div class="space-name en-text">2 Bathrooms</div>
+        </div>
+        <p class="space-desc it-text">Doccia in entrambi i bagni. Asciugacapelli disponibile.</p>
+        <p class="space-desc en-text">Shower in both bathrooms. Hairdryer available.</p>
+        <div class="tag-row">
+          <span class="tag it-text">Doccia</span><span class="tag en-text">Shower</span>
+          <span class="tag it-text">Asciugacapelli</span><span class="tag en-text">Hairdryer</span>
+          <span class="tag it-text">Ferro da stiro</span><span class="tag en-text">Iron</span>
+        </div>
+      </div>
+      <!-- Veranda -->
+      <div class="space-card">
+        <div class="space-header">
+          <span class="space-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span>
+          <div class="space-name it-text">Veranda</div>
+          <div class="space-name en-text">Veranda</div>
+        </div>
+        <p class="space-desc it-text">Veranda con <strong>vista mare e vista sulla Tavolara</strong>. Perfetta per la colazione con il profumo del mare o per guardare il tramonto.</p>
+        <p class="space-desc en-text">Veranda with <strong>sea view and view of Tavolara island</strong>. Perfect for breakfast with the scent of the sea or watching the sunset.</p>
+        <div class="tag-row">
+          <span class="tag it-text">Vista mare</span><span class="tag en-text">Sea view</span>
+          <span class="tag it-text">Vista Tavolara</span><span class="tag en-text">Tavolara view</span>
+        </div>
+      </div>
+      <!-- Esterni -->
+      <div class="space-card">
+        <div class="space-header">
+          <span class="space-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          <div class="space-name it-text">Giardino &amp; Piscina</div>
+          <div class="space-name en-text">Garden &amp; Pool</div>
+        </div>
+        <p class="space-desc it-text">Giardino immerso nella macchia mediterranea con <strong>piscina</strong>.</p>
+        <p class="space-desc en-text">Garden set in Mediterranean scrubland with <strong>swimming pool</strong>.</p>
+        <div class="tag-row">
+          <span class="tag it-text">Piscina</span><span class="tag en-text">Pool</span>
+          <span class="tag it-text">Giardino</span><span class="tag en-text">Garden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DA VISITARE ═══ -->
+  <div id="visitare" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">I Consigli di Carola</div>
+      <div class="page-eyebrow en-text">Carola's Picks</div>
+      <div class="page-title it-text">Luoghi da Vedere</div>
+      <div class="page-title en-text">Places to Visit</div>
+    </div>
+    <div class="page-body">
+      <div class="place-card">
+        <div class="place-dot"></div>
+        <div style="flex:1">
+          <div class="place-name">J Beach</div>
+          <p class="place-desc it-text">Spiaggia libera e attrezzata vicinissima alla villa. Possibilità di pranzo e cena con <strong>prodotti tipici locali</strong>. Anche ottima per la colazione sul mare!</p>
+          <p class="place-desc en-text">Free and equipped beach very close to the villa. Lunch and dinner available with <strong>local typical products</strong>. Also great for breakfast by the sea!</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+            <div class="place-dist">2 km · €€€</div>
+            <a href="https://www.google.com/maps/search/J+Beach+Olbia+Sardegna" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me here</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="place-card">
+        <div class="place-dot"></div>
+        <div style="flex:1">
+          <div class="place-name">San Pantaleo</div>
+          <p class="place-desc it-text">Borgo caratteristico e pittoresco, da non perdere. <strong>Attenzione:</strong> il giovedì mattina c'è il mercato, parcheggiare è molto difficile.</p>
+          <p class="place-desc en-text">Charming and picturesque village, not to be missed. <strong>Note:</strong> on Thursday mornings there is a market and parking is very difficult.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+            <div class="place-dist">5 km</div>
+            <a href="https://www.google.com/maps/search/San+Pantaleo+Olbia+Sardegna" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me here</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="place-card">
+        <div class="place-dot"></div>
+        <div style="flex:1">
+          <div class="place-name">Cantina Surrau</div>
+          <p class="place-desc it-text">Cantina vinicola in località Arzachena. Visita alla cantina e <strong>degustazione aperitivi con vini locali</strong>. Prenotazione sempre consigliata.</p>
+          <p class="place-desc en-text">Winery in Arzachena. Tour the cellar and enjoy <strong>aperitivo with local wine tasting</strong>. Booking always recommended.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+            <div class="place-dist">11 km</div>
+            <a href="https://www.google.com/maps/search/Cantina+Surrau+Arzachena" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me here</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="place-card">
+        <div class="place-dot"></div>
+        <div style="flex:1">
+          <div class="place-name">Cala Sassari</div>
+          <p class="place-desc it-text">Spiaggia attrezzata e libera, <strong>splendida con la Tavolara di fronte</strong>. Acque cristalline, ottima anche per i bambini.</p>
+          <p class="place-desc en-text">Equipped and free beach, <strong>stunning with Tavolara island in front</strong>. Crystal-clear water, great for families with children.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+            <div class="place-dist">18 km</div>
+            <a href="https://maps.app.goo.gl/GaRRRtTL41k656J1A" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me here</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="secret-card">
+        <div class="secret-label">⭐ <span class="it-text">Segreto Locale</span><span class="en-text">Local Secret</span></div>
+        <p class="secret-text it-text">Non perderti l'acquisto di un ottimo pesce fresco alla <strong>Pescheria Calvisi di Olbia</strong>, in Viale Aldo Moro 190/A. Un must per gli amanti del mare a tavola!</p>
+        <p class="secret-text en-text">Don't miss buying fresh fish at <strong>Pescheria Calvisi in Olbia</strong>, Viale Aldo Moro 190/A. A must for seafood lovers!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ RISTORANTI ═══ -->
+  <div id="ristoranti" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Consigli dell'host</div>
+      <div class="page-eyebrow en-text">Host's favourites</div>
+      <div class="page-title it-text">Dove Mangiare</div>
+      <div class="page-title en-text">Where to Eat</div>
+    </div>
+    <div class="page-body">
+
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Lo Scorfano Allegro</div>
+          <div class="resto-type it-text">Pesce · Golfo Aranci</div>
+          <div class="resto-type en-text">Seafood · Golfo Aranci</div>
+          <p class="resto-desc it-text">Atmosfera rilassata e accogliente. Ottimo rapporto qualità prezzo — uno dei preferiti di Carola!</p>
+          <p class="resto-desc en-text">Relaxed and welcoming atmosphere. Excellent value for money — one of Carola's favourites!</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€€</span></div>
+            <a href="https://www.google.com/maps/search/Lo+Scorfano+Allegro+Golfo+Aranci" target="_blank" class="guide-btn">
+              <span class="it-text">Portami qui</span><span class="en-text">Guide me here</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Stazzu Li Paladini</div>
+          <div class="resto-type it-text">Agriturismo · Via Sole Ruju 22, Olbia</div>
+          <div class="resto-type en-text">Farmhouse · Via Sole Ruju 22, Olbia</div>
+          <p class="resto-desc it-text">Menu abbondante e di grande soddisfazione. <strong>Prenotazione obbligatoria</strong> — è molto richiesto!</p>
+          <p class="resto-desc en-text">Generous menu with great satisfaction. <strong>Booking essential</strong> — very popular!</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€€</span></div>
+            <a href="https://www.google.com/maps/search/Stazzu+Li+Paladini+Olbia" target="_blank" class="guide-btn">
+              <span class="it-text">Portami qui</span><span class="en-text">Guide me here</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">L'Assaggio</div>
+          <div class="resto-type it-text">Pesce · San Pantaleo</div>
+          <div class="resto-type en-text">Seafood · San Pantaleo</div>
+          <p class="resto-desc it-text">Le <strong>cozze di Olbia</strong> preparate in 18 ricette diverse — un'esperienza unica! Da non perdere assolutamente.</p>
+          <p class="resto-desc en-text"><strong>Olbia mussels</strong> prepared in 18 different recipes — a truly unique experience. Absolutely unmissable.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€€</span></div>
+            <a href="https://www.google.com/maps/search/Ristorante+Assaggio+San+Pantaleo" target="_blank" class="guide-btn">
+              <span class="it-text">Portami qui</span><span class="en-text">Guide me here</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-label it-text">☕ Colazione</div>
+        <div class="market-label en-text">☕ Breakfast</div>
+        <p style="font-size:13px;line-height:1.7;color:var(--text-mid)">
+          <span class="it-text">La colazione in veranda a casa è di grande soddisfazione — ma se volete farla sul mare, non perdete la <strong>terrazza di J Beach</strong>: vicinissima e con il profumo del mare e il rumore delle onde.</span>
+          <span class="en-text">Breakfast on the veranda at home is wonderful — but if you want it by the sea, don't miss the <strong>J Beach terrace</strong>: very close and with the scent of the sea and the sound of the waves.</span>
+        </p>
+      </div>
+
+      <div class="market-card">
+        <div class="market-label it-text">🛒 Supermercati</div>
+        <div class="market-label en-text">🛒 Supermarkets</div>
+        <p style="font-size:13px;line-height:1.75;color:var(--text-mid)">
+          <span class="it-text"><strong>Dettori Market</strong> — il più vicino, sulla strada che porta a Olbia.<br><strong>Conad</strong> (centro commerciale Terranova, SS 125 km 4,800, Olbia) — per una scelta più ampia o per farsi portare la spesa a casa.</span>
+          <span class="en-text"><strong>Dettori Market</strong> — the closest, on the road to Olbia.<br><strong>Conad</strong> (Terranova shopping centre, SS 125 km 4,800, Olbia) — for a wider selection or home delivery.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SERVIZI ═══ -->
+  <div id="servizi" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Extra</div>
+      <div class="page-eyebrow en-text">Extra</div>
+      <div class="page-title it-text">Servizi</div>
+      <div class="page-title en-text">Services</div>
+    </div>
+    <div class="page-body">
+      <div class="card">
+        <div class="service-row">
+          <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 22V12a9 9 0 0118 0v10"/><path d="M12 13v9"/><path d="M8 17h8"/></svg></span>
+          <div>
+            <div class="service-name it-text">Pulizie Aggiuntive</div>
+            <div class="service-name en-text">Extra Cleaning</div>
+            <div class="service-desc it-text">Disponibile su richiesta a <strong>€ 60,00</strong>.</div>
+            <div class="service-desc en-text">Available on request for <strong>€ 60.00</strong>.</div>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="service-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></span>
+          <div>
+            <div class="service-name it-text">Spesa Vicina</div>
+            <div class="service-name en-text">Nearby Shopping</div>
+            <div class="service-desc it-text">Il <strong>Dettori Market</strong> è il supermercato più vicino. Per una spesa più comoda: <strong>Conad</strong> al centro commerciale Terranova (SS 125 km 4,800, Olbia).</div>
+            <div class="service-desc en-text"><strong>Dettori Market</strong> is the closest supermarket. For a more convenient shop: <strong>Conad</strong> at Terranova shopping centre (SS 125 km 4,800, Olbia).</div>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/></svg></span>
+          <div>
+            <div class="service-name it-text">Manutenzione Tecnica</div>
+            <div class="service-name en-text">Technical Maintenance</div>
+            <div class="service-desc it-text">Per qualsiasi problema tecnico abbiamo un <strong>manutentore di fiducia</strong>. Segnalate il problema a Carola e provvederà a contattarlo.</div>
+            <div class="service-desc en-text">For any technical issue we have a <strong>trusted maintenance person</strong>. Report the problem to Carola and she will contact them.</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-bar">
+        <div class="contact-bar-text">
+          <div class="contact-bar-lbl it-text">Host</div>
+          <div class="contact-bar-lbl en-text">Host</div>
+          <div class="contact-bar-name">Carola</div>
+        </div>
+        <a href="tel:+393392177439" class="contact-bar-btn">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.69A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.5a16 16 0 006.29 6.29l1.24-1.26a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span class="it-text">Chiama ora</span>
+          <span class="en-text">Call now</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ EMERGENZA ═══ -->
+  <div id="emergenza" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Numeri Utili</div>
+      <div class="page-eyebrow en-text">Useful Numbers</div>
+      <div class="page-title it-text">Emergenze</div>
+      <div class="page-title en-text">Emergencies</div>
+    </div>
+    <div class="page-body">
+
+      <div class="sos-card">
+        <div class="sos-icon"><svg viewBox="0 0 24 24" style="stroke:#E74C3C"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="sos-info">
+          <div class="sos-name it-text">Pronto Soccorso</div>
+          <div class="sos-name en-text">Emergency Room</div>
+          <div class="sos-desc">Osp. Giovanni Paolo II · Olbia</div>
+        </div>
+        <a href="tel:118" class="call-btn"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.69A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.5a16 16 0 006.29 6.29l1.24-1.26a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>118</a>
+      </div>
+
+      <div class="sos-card">
+        <div class="sos-icon"><svg viewBox="0 0 24 24" style="stroke:#3498DB"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="sos-info">
+          <div class="sos-name">Carabinieri</div>
+          <div class="sos-desc it-text">Pronto intervento</div>
+          <div class="sos-desc en-text">Emergency response</div>
+        </div>
+        <a href="tel:112" class="call-btn"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.69A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.5a16 16 0 006.29 6.29l1.24-1.26a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>112</a>
+      </div>
+
+      <div class="sos-card">
+        <div class="sos-icon"><svg viewBox="0 0 24 24" style="stroke:#E67E22"><path d="M8.56 2.9A7 7 0 0119 9v4l3 3v1H2v-1l3-3V9a7 7 0 014.56-6.1M12 22a2 2 0 002-2h-4a2 2 0 002 2z"/></svg></div>
+        <div class="sos-info">
+          <div class="sos-name it-text">Vigili del Fuoco</div>
+          <div class="sos-name en-text">Fire Brigade</div>
+          <div class="sos-desc it-text">Incendi · Allagamenti</div>
+          <div class="sos-desc en-text">Fires · Floods</div>
+        </div>
+        <a href="tel:115" class="call-btn"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.69A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.5a16 16 0 006.29 6.29l1.24-1.26a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>115</a>
+      </div>
+
+      <div class="contact-bar">
+        <div class="contact-bar-text">
+          <div class="contact-bar-lbl it-text">Host — Carola</div>
+          <div class="contact-bar-lbl en-text">Host — Carola</div>
+          <div class="contact-bar-name">339 217 7439</div>
+        </div>
+        <a href="tel:+393392177439" class="contact-bar-btn">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.69A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.5a16 16 0 006.29 6.29l1.24-1.26a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span class="it-text">Chiama ora</span>
+          <span class="en-text">Call now</span>
+        </a>
+      </div>
+
+      <div class="contact-bar">
+        <div class="contact-bar-text">
+          <div class="contact-bar-lbl it-text">Referente locale</div>
+          <div class="contact-bar-lbl en-text">Local contact</div>
+          <div class="contact-bar-name">Graziella</div>
+        </div>
+        <a href="tel:+393275905134" class="contact-bar-btn">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.69A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.5a16 16 0 006.29 6.29l1.24-1.26a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          327 590 5134
+        </a>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-label it-text">⚡ Quadro Elettrico</div>
+        <div class="info-box-label en-text">⚡ Electrical Panel</div>
+        <p class="it-text"><strong>Dietro la porta</strong> che porta dalla sala al corridoio. Riattiva gli interruttori dall'alto verso il basso. Se il problema persiste, chiama Carola.</p>
+        <p class="en-text"><strong>Behind the door</strong> leading from the living room to the hallway. Reset the switches from top to bottom. If the problem persists, call Carola.</p>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-label it-text">💧 Chiusura Acqua</div>
+        <div class="info-box-label en-text">💧 Water Shut-off</div>
+        <p class="it-text">Non esiste il gas (tutto elettrico). La <strong>saracinesca di chiusura dell'acqua</strong> si trova in giardino, nello sportellino di fianco al cancellino.</p>
+        <p class="en-text">There is no gas (fully electric). The <strong>water shut-off valve</strong> is in the garden, in the small panel next to the gate.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ CHECK-OUT ═══ -->
+  <div id="checkout" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Partenza</div>
+      <div class="page-eyebrow en-text">Departure</div>
+      <div class="page-title">Check-out</div>
+    </div>
+    <div class="page-body">
+      <div class="card">
+        <div class="card-label it-text">Orario</div>
+        <div class="card-label en-text">Time</div>
+        <p class="it-text">Il check-out è <strong>entro le 11:00</strong>. Per partenze anticipate o deposito bagagli contattate Carola.</p>
+        <p class="en-text">Check-out is by <strong>11:00 AM</strong>. For early departures or luggage storage, contact Carola.</p>
+      </div>
+
+      <div class="card">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title it-text">Raccogliere i bagagli</div>
+            <div class="step-title en-text">Collect your luggage</div>
+            <div class="step-desc it-text">Controllate camere, bagni, veranda e giardino per oggetti personali.</div>
+            <div class="step-desc en-text">Check the bedrooms, bathrooms, veranda and garden for personal belongings.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title it-text">Rifiuti</div>
+            <div class="step-title en-text">Waste</div>
+            <div class="step-desc it-text">Smaltite i rifiuti negli appositi contenitori (umido, secco, carta/plastica/vetro). Portate i sacchetti pieni ai bidoni del parcheggio.</div>
+            <div class="step-desc en-text">Dispose of waste in the correct bins (wet, dry, paper/plastic/glass). Take full bags to the bins by the parking area.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title it-text">Chiudere tutto</div>
+            <div class="step-title en-text">Close everything</div>
+            <div class="step-desc it-text">Finestre, tapparelle, aria condizionata, luci, cancellini del giardino.</div>
+            <div class="step-desc en-text">Windows, shutters, air conditioning, lights, garden gates.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div>
+            <div class="step-title it-text">Consegna chiavi</div>
+            <div class="step-title en-text">Return keys</div>
+            <div class="step-desc it-text">Consegnate le chiavi a <strong>Graziella</strong>. Se non fosse disponibile, usate il telecomando per uscire dal cancello carrabile e riponete le chiavi nell'apposito sportellino con codice vicino al cancellino pedonale.</div>
+            <div class="step-desc en-text">Hand the keys to <strong>Graziella</strong>. If she is unavailable, use the remote to exit through the car gate and place the keys in the coded box next to the pedestrian gate.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div>
+            <div class="step-title it-text">Lascia una recensione ✦</div>
+            <div class="step-title en-text">Leave a review ✦</div>
+            <div class="step-desc it-text">Una recensione su <strong>Airbnb</strong> o <strong>Google Maps</strong> ci aiuta tantissimo. Grazie di cuore!</div>
+            <div class="step-desc en-text">A review on <strong>Airbnb</strong> or <strong>Google Maps</strong> means the world to us. Thank you so much!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-card" style="margin-bottom:0">
+        <p class="welcome-text it-text">Grazie di cuore per aver scelto la nostra villa come vostra casa in Sardegna. Speriamo che il suono del mare, i colori del cielo e i momenti vissuti qui restino con voi ancora a lungo. Vi auguriamo un buon rientro e che un piccolo pezzo di questo luogo speciale vi accompagni ovunque. Buon viaggio!</p>
+        <p class="welcome-text en-text">Thank you so much for choosing our villa as your home in Sardinia. We hope the sound of the sea, the colours of the sky and the moments lived here stay with you for a long time. We wish you a safe journey home, and that a small piece of this special place goes with you wherever you go. Bon voyage!</p>
+        <div class="welcome-author">
+          <div class="author-mono"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="author-name">Carola</div>
+            <div class="author-role it-text">Vi aspetta il prossimo anno!</div>
+            <div class="author-role en-text">See you next year!</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showScreen(id, tabEl) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (tabEl) {
+    tabEl.classList.add('active');
+    tabEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  document.querySelector('.screen.active').scrollTop = 0;
+}
+
+function goTo(id, idx) {
+  const tabs = document.querySelectorAll('.nav-tab');
+  showScreen(id, tabs[idx] || null);
+}
+
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+function copyPwd(btn) {
+  const pwd = document.getElementById('pwd').textContent;
+  navigator.clipboard.writeText(pwd).then(() => {
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="12" height="12" stroke="white" stroke-width="2.5" fill="none"><polyline points="20 6 9 17 4 12"/></svg> Copiata!';
+    setTimeout(() => { btn.innerHTML = origHTML; }, 2000);
+  }).catch(() => alert('Password: ' + pwd));
+}
+</script>
+</body>
+</html>
