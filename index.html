@@ -241,6 +241,10 @@ body.lang-it .en-text { display: none !important; }
       <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
       <span class="tab-label"><span class="it-text">Ristoranti</span><span class="en-text">Eat & Drink</span></span>
     </button>
+    <button class="nav-tab" onclick="showScreen('spiagge',this)">
+      <span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span>
+      <span class="tab-label"><span class="it-text">Spiagge</span><span class="en-text">Beaches</span></span>
+    </button>
     <button class="nav-tab" onclick="showScreen('servizi',this)">
       <span class="tab-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
       <span class="tab-label"><span class="it-text">Servizi</span><span class="en-text">Services</span></span>
@@ -304,15 +308,19 @@ body.lang-it .en-text { display: none !important; }
           <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
           <span class="btn-label"><span class="it-text">Ristoranti</span><span class="en-text">Restaurants</span></span>
         </button>
-        <button class="icon-btn" onclick="goTo('servizi',7)">
+        <button class="icon-btn" onclick="goTo('spiagge',7)">
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span>
+          <span class="btn-label"><span class="it-text">Spiagge</span><span class="en-text">Beaches</span></span>
+        </button>
+        <button class="icon-btn" onclick="goTo('servizi',8)">
           <span class="btn-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
           <span class="btn-label"><span class="it-text">Servizi</span><span class="en-text">Services</span></span>
         </button>
-        <button class="icon-btn" onclick="goTo('emergenza',8)">
+        <button class="icon-btn" onclick="goTo('emergenza',9)">
           <span class="btn-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
           <span class="btn-label"><span class="it-text">Emergenza</span><span class="en-text">Emergency</span></span>
         </button>
-        <button class="icon-btn" onclick="goTo('checkout',9)">
+        <button class="icon-btn" onclick="goTo('checkout',10)">
           <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
           <span class="btn-label">Check-out</span>
         </button>
@@ -677,6 +685,9 @@ body.lang-it .en-text { display: none !important; }
         <div style="height:1px;background:rgba(255,255,255,.15);margin:8px 0 12px"></div>
         <p class="secret-text it-text">Non perdetevi il <strong>mercato di Olbia il sabato mattina</strong>: specialità alimentari e prodotti di artigianato locale. Molto pittoresco!</p>
         <p class="secret-text en-text">Don't miss the <strong>Olbia Saturday morning market</strong>: local food specialities and artisan crafts. Very picturesque!</p>
+        <div style="height:1px;background:rgba(255,255,255,.15);margin:8px 0 12px"></div>
+        <p class="secret-text it-text">Per portare a casa un pezzo di artigianato sardo contemporaneo non perdetevi una visita al laboratorio di <strong>Monica Sotgiu</strong>, a Siniscola, in Via Sarcidano 23. Monica è un'artista che crea oggetti di arredamento ispirati alla ricchezza dei colori, dei tessuti e dei gioielli dell'abito tradizionale sardo. I suoi specchi decorati con tessuti e lana sarda sono opere sempre uniche e realizzate a mano.<br><span style="font-size:12px;opacity:.85">📞 <a href="tel:+393934532385" style="color:inherit">+39 393 453 2385</a> · ✉ <a href="mailto:moncasotgiu&#64;hotmail&#46;it" style="color:inherit">moncasotgiu&#64;hotmail&#46;it</a></span></p>
+        <p class="secret-text en-text">To bring home a piece of contemporary Sardinian craftsmanship, visit <strong>Monica Sotgiu</strong>'s studio in Siniscola, Via Sarcidano 23. Monica is an artist who creates home décor objects inspired by the colours, fabrics and jewellery of the traditional Sardinian costume. Her mirrors decorated with Sardinian fabrics and wool are unique, hand-made works of art.<br><span style="font-size:12px;opacity:.85">📞 <a href="tel:+393934532385" style="color:inherit">+39 393 453 2385</a> · ✉ <a href="mailto:moncasotgiu&#64;hotmail&#46;it" style="color:inherit">moncasotgiu&#64;hotmail&#46;it</a></span></p>
       </div>
     </div>
   </div>
@@ -761,6 +772,261 @@ body.lang-it .en-text { display: none !important; }
           <span class="it-text"><strong>Dettori Market</strong> — il più vicino, sulla strada che porta a Olbia.<br><strong>Conad</strong> (centro commerciale Terranova, SS 125 km 4,800, Olbia) — per una scelta più ampia o per farsi portare la spesa a casa.</span>
           <span class="en-text"><strong>Dettori Market</strong> — the closest, on the road to Olbia.<br><strong>Conad</strong> (Terranova shopping centre, SS 125 km 4,800, Olbia) — for a wider selection or home delivery.</span>
         </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ SPIAGGE ═══ -->
+  <div id="spiagge" class="screen">
+    <div class="page-header">
+      <div class="page-eyebrow it-text">Costa Smeralda &amp; dintorni</div>
+      <div class="page-eyebrow en-text">Costa Smeralda &amp; surroundings</div>
+      <div class="page-title it-text">Spiagge</div>
+      <div class="page-title en-text">Beaches</div>
+    </div>
+    <div class="page-body">
+      <p style="font-size:13px;line-height:1.7;color:var(--text-soft);text-align:center;padding:4px 8px 10px;font-style:italic" class="it-text">Ecco le spiagge più belle della zona con i contatti per prenotare il tuo lettino.</p>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-soft);text-align:center;padding:4px 8px 10px;font-style:italic" class="en-text">Here are the most beautiful beaches in the area with contacts to book your sun lounger.</p>
+
+      <!-- White Beach Club Liscia Ruja -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">White Beach Club Liscia Ruja</div>
+          <div class="resto-type it-text">Costa Smeralda · Liscia Ruja</div>
+          <div class="resto-type en-text">Costa Smeralda · Liscia Ruja</div>
+          <p class="resto-desc it-text">Una delle spiagge più iconiche della Costa Smeralda. Acqua cristallina dai colori caraibici, sabbia bianca finissima e servizio impeccabile. Atmosfera esclusiva e curata.</p>
+          <p class="resto-desc en-text">One of the most iconic beaches on the Costa Smeralda. Crystal-clear Caribbean-coloured water, fine white sand and impeccable service. Exclusive and refined atmosphere.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 80 – 300</span><span class="tag"><a href="tel:+393348458495" style="color:var(--text-mid);text-decoration:none">📞 334 845 8495</a></span></div>
+            <a href="https://www.google.com/maps/search/White+Beach+Club+Liscia+Ruja+Costa+Smeralda" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shardana Beach Club -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Shardana Beach Club</div>
+          <div class="resto-type it-text">Costa Smeralda</div>
+          <div class="resto-type en-text">Costa Smeralda</div>
+          <p class="resto-desc it-text">Beach club di alta qualità sulla Costa Smeralda, noto per il servizio attento e il mare spettacolare. Perfetto per una giornata di totale relax con ogni comfort.</p>
+          <p class="resto-desc en-text">High-quality beach club on the Costa Smeralda, known for attentive service and spectacular sea. Perfect for a day of total relaxation with every comfort.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 120 – 250</span><span class="tag"><a href="tel:+393473723797" style="color:var(--text-mid);text-decoration:none">📞 347 372 3797</a></span></div>
+            <a href="https://www.google.com/maps/search/Shardana+Beach+Club+Costa+Smeralda" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dolphin Beach Club -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Dolphin Beach Club</div>
+          <div class="resto-type it-text">Costa Smeralda</div>
+          <div class="resto-type en-text">Costa Smeralda</div>
+          <p class="resto-desc it-text">Spiaggia tranquilla e familiare con acque limpidissime. Ottimo rapporto qualità-prezzo per la Costa Smeralda. Ideale per chi cerca relax senza rinunciare alla bellezza del mare sardo.</p>
+          <p class="resto-desc en-text">Quiet, family-friendly beach with crystal-clear water. Excellent value for money for the Costa Smeralda. Ideal for those seeking relaxation without giving up the beauty of the Sardinian sea.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 60 – 120</span><span class="tag"><a href="tel:+393487081237" style="color:var(--text-mid);text-decoration:none">📞 348 708 1237</a></span></div>
+            <a href="https://www.google.com/maps/search/Dolphin+Beach+Club+Costa+Smeralda" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beach Concierge Liscia Ruja -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Beach Concierge Liscia Ruja</div>
+          <div class="resto-type it-text">Costa Smeralda · Liscia Ruja</div>
+          <div class="resto-type en-text">Costa Smeralda · Liscia Ruja</div>
+          <p class="resto-desc it-text">Servizio concierge dedicato sulla celebre Liscia Ruja. Prenotazione lettini semplice e organizzata. Una delle spiagge più belle della Sardegna con acque da sogno.</p>
+          <p class="resto-desc en-text">Dedicated concierge service on the famous Liscia Ruja. Simple and organised sun bed booking. One of the most beautiful beaches in Sardinia with dreamy waters.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 80</span><span class="tag"><a href="tel:+393357529186" style="color:var(--text-mid);text-decoration:none">📞 335 752 9186</a></span></div>
+            <a href="https://maps.app.goo.gl/cn48paeP7NzLWTVY6" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Piccolo Pevero -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Spiaggia del Piccolo Pevero</div>
+          <div class="resto-type it-text">Porto Cervo · Piccolo Pevero</div>
+          <div class="resto-type en-text">Porto Cervo · Piccolo Pevero</div>
+          <p class="resto-desc it-text">Incantevole caletta riparata con acqua trasparente color smeraldo. Più raccolta e intima rispetto alle grandi spiagge vicine, molto apprezzata per la sua bellezza naturale.</p>
+          <p class="resto-desc en-text">Enchanting sheltered cove with transparent emerald water. More intimate than the larger nearby beaches, highly appreciated for its natural beauty.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 50 – 120</span><span class="tag"><a href="tel:+393402259105" style="color:var(--text-mid);text-decoration:none">📞 340 225 9105</a></span></div>
+            <a href="https://www.google.com/maps/search/Spiaggia+Piccolo+Pevero+Costa+Smeralda" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Romazzino -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Spiaggia del Romazzino</div>
+          <div class="resto-type it-text">Costa Smeralda · Romazzino</div>
+          <div class="resto-type en-text">Costa Smeralda · Romazzino</div>
+          <p class="resto-desc it-text">Una delle spiagge più esclusive e scenografiche di tutta la Costa Smeralda. Servizio di altissimo livello, mare di un blu intenso, granito rosa e vegetazione mediterranea. Un'esperienza unica.</p>
+          <p class="resto-desc en-text">One of the most exclusive and spectacular beaches on the entire Costa Smeralda. Top-level service, deep blue sea, pink granite rocks and Mediterranean vegetation. A unique experience.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 200 – 500</span><span class="tag"><a href="tel:+390622330330" style="color:var(--text-mid);text-decoration:none">📞 062 233 0330</a></span></div>
+            <a href="https://maps.app.goo.gl/VGQn5RADNsz1qPz76" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phi Beach -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Phi Beach</div>
+          <div class="resto-type it-text">Baja Sardinia · Beach Club</div>
+          <div class="resto-type en-text">Baja Sardinia · Beach Club</div>
+          <p class="resto-desc it-text">Il beach club più iconico della Costa Smeralda, famoso per i suoi tramonti mozzafiato e gli aperitivi al calar del sole. Musica, design curato e mare straordinario. Un'esperienza da vivere almeno una volta.</p>
+          <p class="resto-desc en-text">The most iconic beach club on the Costa Smeralda, famous for its breathtaking sunsets and sunset aperitivos. Music, refined design and extraordinary sea. An experience to have at least once.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 300 – 1000</span><span class="tag"><a href="tel:+393452884254" style="color:var(--text-mid);text-decoration:none">📞 345 288 4254</a></span></div>
+            <a href="https://maps.app.goo.gl/CfWPMiAUXixP8xoa6" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rena Bianca Portisco -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Rena Bianca Portisco</div>
+          <div class="resto-type it-text">Portisco</div>
+          <div class="resto-type en-text">Portisco</div>
+          <p class="resto-desc it-text">Spiaggia di sabbia bianca finissima nei pressi del marina di Portisco. Acque calme e trasparenti, molto apprezzata dalle famiglie. Servizi curati e contesto naturale di grande bellezza.</p>
+          <p class="resto-desc en-text">Fine white sand beach near Portisco marina. Calm, clear water, very popular with families. Well-kept facilities in a naturally beautiful setting.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 50 – 100</span><span class="tag"><a href="tel:+393384480511" style="color:var(--text-mid);text-decoration:none">📞 338 448 0511</a></span></div>
+            <a href="https://www.google.com/maps/search/Rena+Bianca+Portisco+Sardegna" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spiaggia Bianca White Beach -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Spiaggia Bianca White Beach</div>
+          <div class="resto-type it-text">Costa Smeralda</div>
+          <div class="resto-type en-text">Costa Smeralda</div>
+          <p class="resto-desc it-text">Sabbia bianchissima e acqua dai colori caraibici. Spiaggia elegante con servizio di qualità. Molto scenografica, ideale per chi vuole unire bellezza naturale e comfort.</p>
+          <p class="resto-desc en-text">Pure white sand and Caribbean-coloured water. Elegant beach with quality service. Very scenic, ideal for those who want to combine natural beauty and comfort.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 70 – 180</span><span class="tag"><a href="tel:+393476598812" style="color:var(--text-mid);text-decoration:none">📞 347 659 8812</a></span></div>
+            <a href="https://maps.app.goo.gl/R7DLyr6a8yvECJgu6" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cala Sassari -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Spiaggia Cala Sassari</div>
+          <div class="resto-type it-text">Olbia · Cala Sassari</div>
+          <div class="resto-type en-text">Olbia · Cala Sassari</div>
+          <p class="resto-desc it-text">Spiaggia splendida con l'isola di Tavolara di fronte — uno spettacolo unico. Acque cristalline e basso fondale, ottima anche per i bambini.</p>
+          <p class="resto-desc en-text">Stunning beach with Tavolara island right in front — a truly unique sight. Crystal-clear and shallow water, great for children too.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 70 – 140</span><span class="tag"><a href="tel:+393476302746" style="color:var(--text-mid);text-decoration:none">📞 347 630 2746</a></span></div>
+            <a href="https://maps.app.goo.gl/GaRRRtTL41k656J1A" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Don Pedro Beach -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Don Pedro Beach</div>
+          <div class="resto-type it-text">Costa Smeralda</div>
+          <div class="resto-type en-text">Costa Smeralda</div>
+          <p class="resto-desc it-text">Spiaggia accogliente con un buon rapporto qualità-prezzo per la Costa Smeralda. Mare limpido e servizi ben organizzati. Atmosfera rilassata e piacevole.</p>
+          <p class="resto-desc en-text">Welcoming beach with good value for the Costa Smeralda. Clear sea and well-organised services. Relaxed and pleasant atmosphere.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 50 – 100</span><span class="tag"><a href="tel:+393396763454" style="color:var(--text-mid);text-decoration:none">📞 339 676 3454</a></span></div>
+            <a href="https://maps.app.goo.gl/JsAFVvAhbEBN8pxW7" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lu Impostu Onda Blu -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Lu Impostu – Onda Blu</div>
+          <div class="resto-type it-text">San Teodoro · Lu Impostu</div>
+          <div class="resto-type en-text">San Teodoro · Lu Impostu</div>
+          <p class="resto-desc it-text">Lu Impostu è una delle spiagge più belle del Golfo di Olbia, con acqua bassa e trasparente, ideale per le famiglie. Onda Blu offre un servizio affidabile e ben organizzato.</p>
+          <p class="resto-desc en-text">Lu Impostu is one of the most beautiful beaches in the Gulf of Olbia, with shallow, transparent water perfect for families. Onda Blu offers reliable and well-organised service.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 70 – 140</span><span class="tag"><a href="tel:+393313890148" style="color:var(--text-mid);text-decoration:none">📞 331 389 0148</a></span></div>
+            <a href="https://www.google.com/maps/search/Lu+Impostu+Onda+Blu+San+Teodoro" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cala Brandinchi -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">Cala Brandinchi</div>
+          <div class="resto-type it-text">San Teodoro · "La Piccola Tahiti"</div>
+          <div class="resto-type en-text">San Teodoro · "Little Tahiti"</div>
+          <p class="resto-desc it-text">Soprannominata la "Piccola Tahiti" per le sue acque azzurro-verde intenso e la sabbia bianchissima finissima. Considerata una delle spiagge più belle d'Italia. Da non perdere assolutamente!</p>
+          <p class="resto-desc en-text">Nicknamed "Little Tahiti" for its intense blue-green waters and ultra-fine white sand. Considered one of the most beautiful beaches in Italy. Absolutely not to be missed!</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 60 – 95</span><span class="tag"><a href="tel:+393404826577" style="color:var(--text-mid);text-decoration:none">📞 340 482 6577</a></span></div>
+            <a href="https://maps.app.goo.gl/oY2qE5SVYhSTYNJy8" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- L'Ira Beach Club Porto Rotondo -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">L'Ira Beach Club</div>
+          <div class="resto-type it-text">Porto Rotondo</div>
+          <div class="resto-type en-text">Porto Rotondo</div>
+          <p class="resto-desc it-text">Beach club di Porto Rotondo con atmosfera chic e riservata. Mare pulito e trasparente, servizio curato. Ottima posizione per esplorare il porticciolo di Porto Rotondo a fine giornata.</p>
+          <p class="resto-desc en-text">Chic and private beach club in Porto Rotondo. Clean, transparent sea and attentive service. Great location to explore Porto Rotondo's harbour at the end of the day.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 60 – 120</span><span class="tag"><a href="tel:+39078934745" style="color:var(--text-mid);text-decoration:none">📞 0789 34745</a></span></div>
+            <a href="https://www.google.com/maps/search/L+Ira+Beach+Club+Porto+Rotondo+Sardegna" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- J-Beach -->
+      <div class="resto-card">
+        <div class="resto-band"></div>
+        <div class="resto-body">
+          <div class="resto-name">J-Beach</div>
+          <div class="resto-type it-text">Olbia · Vicinissima alla villa</div>
+          <div class="resto-type en-text">Olbia · Very close to the villa</div>
+          <p class="resto-desc it-text">La spiaggia più comoda dalla villa! Ottima per colazione sul mare, pranzo e cena con prodotti locali. Mare pulito, servizio amichevole e atmosfera rilassata. Una certezza per tutta la famiglia.</p>
+          <p class="resto-desc en-text">The most convenient beach from the villa! Great for breakfast by the sea, lunch and dinner with local products. Clean sea, friendly service and relaxed atmosphere. A safe bet for the whole family.</p>
+          <div class="resto-footer">
+            <div class="tag-row"><span class="tag">€ 70 – 120</span><span class="tag"><a href="tel:+393282373230" style="color:var(--text-mid);text-decoration:none">📞 328 237 3230</a></span></div>
+            <a href="https://www.google.com/maps/search/J+Beach+Olbia+Sardegna" target="_blank" class="guide-btn"><span class="it-text">Portami qui</span><span class="en-text">Guide me</span> <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
       </div>
 
     </div>
